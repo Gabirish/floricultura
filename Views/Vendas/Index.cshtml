@@ -1,0 +1,39 @@
+﻿@model IEnumerable<FloriculturaBeta.Models.Venda>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Index</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.Cliente.ClienteNome)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Funcionario.FuncionarioNome)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.Cliente.ClienteNome)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Funcionario.FuncionarioNome)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id=item.VendaId }) |
+            @Html.ActionLink("Details", "Details", new { id=item.VendaId }) |
+            @Html.ActionLink("Delete", "Delete", new { id=item.VendaId })
+        </td>
+    </tr>
+}
+
+</table>
