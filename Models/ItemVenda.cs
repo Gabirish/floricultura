@@ -15,5 +15,7 @@ namespace FloriculturaBeta.Models
   
         public virtual Venda Venda { get; set; }
         public virtual Produto Produto { get; set; }
+
+        
     }
 }

@@ -26,9 +26,35 @@
             @Html.DisplayFor(model => model.Funcionario.FuncionarioNome)
         </dd>
 
+        <table class="table">
+            <tr>
+                <th>
+                   Produto
+                </th>
+                <th>
+                   Quantidade
+                </th>
+            </tr>
+
+            @foreach (var item in Model.ItensVenda)
+            {
+                <tr>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Produto.ProdutoNome)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.ItemVendaQuantidade)
+                    </td>
+                  
+                  
+                </tr>
+            }
+
+        </table>
+
     </dl>
 </div>
 <p>
-    @Html.ActionLink("Edit", "Edit", new { id = Model.VendaId }) |
+
     @Html.ActionLink("Back to List", "Index")
 </p>

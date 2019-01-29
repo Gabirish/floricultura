@@ -1,0 +1,90 @@
+﻿@model FloriculturaBeta.Models.Cliente
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>Cliente</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.ClienteNome)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ClienteNome)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.ClienteCpf)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ClienteCpf)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.ClienteTelefone)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ClienteTelefone)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.ClienteEstado)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ClienteEstado)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.ClienteCidade)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ClienteCidade)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.ClienteBairro)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ClienteBairro)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.ClienteRua)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ClienteRua)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.ClienteNumero)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ClienteNumero)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.ClienteComplemento)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ClienteComplemento)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.ClienteId }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>
