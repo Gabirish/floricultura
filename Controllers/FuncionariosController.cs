@@ -10,6 +10,7 @@ using FloriculturaBeta.Models;
 
 namespace FloriculturaBeta.Controllers
 {
+    [Authorize]
     public class FuncionariosController : Controller
     {
         private FloriculturaContext db = new FloriculturaContext();
