@@ -46,7 +46,7 @@ namespace FloriculturaBeta.Controllers
             ViewBag.ClienteId = new SelectList(db.Clientes, "ClienteId", "ClienteNome");
             ViewBag.FuncionarioId = new SelectList(db.Funcionarios, "FuncionarioId", "FuncionarioNome");
             var produtos = new Venda();
-            produtos.Produtos = db.Produtos.ToList();
+            produtos.Produtos = db.Produtos.OrderBy(x => x.ProdutoNome).ToList();
      
             return View(produtos);
         }
@@ -63,29 +63,24 @@ namespace FloriculturaBeta.Controllers
         //}
         public ActionResult Create(Venda venda)
         {
-            if (ModelState.IsValid)
+            if (ModelState.IsValid && venda.verificaQuantidade())
             {
                 venda.VendaData = DateTime.Now;
                 db.Vendas.Add(venda);
                 db.SaveChanges();
-
-
-                //Necessário buscar melhor alternativa para esse evento. A lista retornada da view está vindo vazia nos 
-                //itens que não são alterados. Crio a lista novamente e atribuo a quantidade de vendas para os itens.
-                // Se os itens mudarem de posição na lista, será atribuido uma compra ao iten errado.
-                List<Produto> produtos = db.Produtos.ToList();
+              
                 var itensVendidos = new List<ItemVenda>();
 
-                for (int i = 0; i < produtos.Count; i++)
+                for (int i = 0; i < venda.Produtos.Count; i++)
                 {
-                    produtos[i].QuantidadeVenda = venda.Produtos[i].QuantidadeVenda;
-                    if (produtos[i].QuantidadeVenda > 0)
+                    venda.Produtos[i].QuantidadeVenda = venda.Produtos[i].QuantidadeVenda;
+                    if (venda.Produtos[i].QuantidadeVenda > 0)
                     {
                         itensVendidos.Add(new ItemVenda()
                         {
-                            ItemVendaQuantidade = produtos[i].QuantidadeVenda,
+                            ItemVendaQuantidade = venda.Produtos[i].QuantidadeVenda,
                             VendaId = venda.VendaId,
-                            ProdutoId = produtos[i].ProdutoId,
+                            ProdutoId = venda.Produtos[i].ProdutoId,
 
                         });
                     }
@@ -101,6 +96,7 @@ namespace FloriculturaBeta.Controllers
                 return RedirectToAction("Index");
             }
 
+            ViewBag.erro = "Quantidade de itens vendidos não pode ser superior a quantidade disponivel no estoque";
             ViewBag.ClienteId = new SelectList(db.Clientes, "ClienteId", "ClienteNome", venda.ClienteId);
             ViewBag.FuncionarioId = new SelectList(db.Funcionarios, "FuncionarioId", "FuncionarioNome", venda.FuncionarioId);
             return View(venda);

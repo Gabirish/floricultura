@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
 using System.Web;
@@ -11,8 +12,17 @@ namespace FloriculturaBeta.Models
     {
 
         public int VendaId { get; set; }
+
+        [Display(Name = "Funcionario")]
+        [Required(AllowEmptyStrings = false)]
         public int FuncionarioId { get; set; }
+
+        [Display(Name = "Cliente")]
+        [Required(AllowEmptyStrings = false)]
         public int ClienteId { get; set; }
+
+        [Display(Name = "Data")]
+        [Required(AllowEmptyStrings = false)]
         public DateTime VendaData { get; set; }
 
 
@@ -24,5 +34,19 @@ namespace FloriculturaBeta.Models
         [NotMapped]
         public virtual List<Produto> Produtos { get; set; }
 
+
+        public bool verificaQuantidade()
+        {
+            foreach (Produto p in Produtos)
+            {
+                if (p.ProdutoEstoque < p.QuantidadeVenda)
+                {
+                    return false;
+                }
+            }
+            return true;
+        }
     }
+
+
 }

@@ -18,7 +18,7 @@ namespace FloriculturaBeta.Controllers
         // GET: Produtoes
         public ActionResult Index()
         {
-            return View(db.Produtos.ToList());
+            return View(db.Produtos.OrderBy(x => x.ProdutoNome).ToList());
         }
 
         // GET: Produtoes/Details/5
