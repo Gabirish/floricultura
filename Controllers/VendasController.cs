@@ -76,6 +76,13 @@ namespace FloriculturaBeta.Controllers
                     venda.Produtos[i].QuantidadeVenda = venda.Produtos[i].QuantidadeVenda;
                     if (venda.Produtos[i].QuantidadeVenda > 0)
                     {
+                        var produtoReferencia = venda.Produtos[i];
+                        var produto = db.Produtos.SingleOrDefault(p => p.ProdutoId == produtoReferencia.ProdutoId);
+                        if (produto != null)
+                        {
+                            produto.ProdutoEstoque -= venda.Produtos[i].QuantidadeVenda;
+                            db.SaveChanges();
+                        }
                         itensVendidos.Add(new ItemVenda()
                         {
                             ItemVendaQuantidade = venda.Produtos[i].QuantidadeVenda,
