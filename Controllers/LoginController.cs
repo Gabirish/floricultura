@@ -26,6 +26,7 @@ namespace FloriculturaBeta.Controllers
             if (authenticatedUser != null)
             {
                 context.SetAuthenticationToken(authenticatedUser.UsuarioId.ToString(), false, authenticatedUser);
+                Session["idUsuario"] = usuario.UsuarioLogin;
                 return RedirectToAction("Index", "Home");
             }
 

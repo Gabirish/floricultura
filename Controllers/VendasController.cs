@@ -43,11 +43,28 @@ namespace FloriculturaBeta.Controllers
         // GET: Vendas/Create
         public ActionResult Create()
         {
+            string idUsuario;
+            if (Session["idUsuario"] != null)
+            {
+                idUsuario = Session["idUsuario"] as string;
+            }
+            else
+            {
+                return RedirectToAction("Logout", "Login");
+            }
+
+            var funcionario = (from f in db.Funcionarios
+                               join u in db.Usuarios on f.FuncionarioId equals u.FuncionarioId
+                               where u.UsuarioLogin == idUsuario
+                               select f);
+
             ViewBag.ClienteId = new SelectList(db.Clientes, "ClienteId", "ClienteNome");
-            ViewBag.FuncionarioId = new SelectList(db.Funcionarios, "FuncionarioId", "FuncionarioNome");
+            //ViewBag.FuncionarioId = db.Funcionarios.Where(f => f.FuncionarioId == id);
+            //ViewBag.FuncionarioId = new SelectList(db.Funcionarios, "FuncionarioId", "FuncionarioNome");
+            ViewBag.FuncionarioId = new SelectList(funcionario, "FuncionarioId", "FuncionarioNome");
             var produtos = new Venda();
             produtos.Produtos = db.Produtos.OrderBy(x => x.ProdutoNome).ToList();
-     
+
             return View(produtos);
         }
 
@@ -68,7 +85,7 @@ namespace FloriculturaBeta.Controllers
                 venda.VendaData = DateTime.Now;
                 db.Vendas.Add(venda);
                 db.SaveChanges();
-              
+
                 var itensVendidos = new List<ItemVenda>();
 
                 for (int i = 0; i < venda.Produtos.Count; i++)

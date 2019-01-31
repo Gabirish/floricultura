@@ -11,6 +11,7 @@ namespace FloriculturaBeta.Models
         FloriculturaContext context = new FloriculturaContext();
         public Usuario GetByUsernameAndPassword(Usuario usuario)
         {
+            
             return context.Usuarios.Where(u => u.UsuarioLogin == usuario.UsuarioLogin & u.UsuarioSenha == usuario.UsuarioSenha).FirstOrDefault();
         }
     }

@@ -86,7 +86,7 @@
                         }
                         else
                         {
-                            @Html.TextBoxFor(p => p.Produtos[i].QuantidadeVenda, new { value = 0, @id = "quantidade", type="number",min= 0,  @onchange = "myFunction(this)" })
+                            @Html.TextBoxFor(p => p.Produtos[i].QuantidadeVenda, new { value = 0, @id = "quantidade", type="number",min= 0,  @onkeyup = "myFunction(this)" })
                             if (Model.Produtos[i].ProdutoEstoque < Model.Produtos[i].QuantidadeVenda)
                             {<p>valor invalido</p>}
                         }
