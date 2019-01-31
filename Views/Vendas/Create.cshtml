@@ -4,7 +4,7 @@
     ViewBag.Title = "Create";
 }
 
-<h2>Create</h2>
+<h2>Nova Venda</h2>
 
 
 @using (Html.BeginForm())
@@ -12,7 +12,7 @@
     @Html.AntiForgeryToken()
 
     <div class="form-horizontal">
-        <h4>Venda</h4>
+       
 
         @if (ViewBag.erro != null)
         {<h3 class="alert-danger"> @ViewBag.erro </h3>}
@@ -35,6 +35,15 @@
             </div>
         </div>
 
+        <div class="form-group">
+            <label class="control-label col-md-2">Valor total</label>
+            <div class="col-md-10">
+                <input class="form-control" id="total" disabled="disabled" />
+            </div>
+
+        </div>
+
+
         <table class="table">
             <tr>
                 <th>
@@ -48,6 +57,9 @@
                 </th>
                 <th>
                     Unidades
+                </th>
+                <th>
+                    Custo parcial
                 </th>
             </tr>
 
@@ -74,29 +86,47 @@
                         }
                         else
                         {
-                            @Html.TextBoxFor(p => p.Produtos[i].QuantidadeVenda, new { value = 0, @id = "quantidade" })
+                            @Html.TextBoxFor(p => p.Produtos[i].QuantidadeVenda, new { value = 0, @id = "quantidade", type="number",min= 0,  @onchange = "myFunction(this)" })
                             if (Model.Produtos[i].ProdutoEstoque < Model.Produtos[i].QuantidadeVenda)
                             {<p>valor invalido</p>}
                         }
                     </td>
+                    <td><label class="valores">_</label></td>
                 </tr>
 
             }
         </table>
 
+        @*<span id="total"></span>*@
         <div class="form-group">
             <div class="col-md-offset-2 col-md-10">
-                <input type="submit" value="Create" class="btn btn-default" />
+                <input type="submit" value="Concluir" class="btn btn-primary" />
             </div>
         </div>
     </div>
 }
 
 <div>
-    @Html.ActionLink("Back to List", "Index")
+    @Html.ActionLink("Voltar", "Index")
 </div>
 
 @section Scripts {
     @Scripts.Render("~/bundles/jqueryval")
 }
 
+<script>
+
+    function myFunction($this) {
+        $($this).parent().siblings(":last").find('label').text(("R$ " + ($($this).parent().siblings().eq(1).text().replace(",", ".") * $this.value).toFixed(2)).replace(".", ","));
+        var total;
+
+        var sum = 0.0;
+        $('.valores').each(function () {
+            sum += parseFloat($(this).text().replace("R$ ", "").replace(",", ".").replace("_", 0));
+        });
+
+        $('#total').val(("R$ " + sum.toFixed(2)).replace(".",","));
+    }
+
+
+</script>
