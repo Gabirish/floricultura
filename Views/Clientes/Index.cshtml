@@ -13,7 +13,7 @@
 <input id="myInput" class="form-control" onkeyup="filtrar()" type="text" placeholder="Buscar..">
 <table class="table">
     <tr>
-        <th>
+        <th id="nome">
             @Html.DisplayNameFor(model => model.ClienteNome)
         </th>
         <th>
@@ -22,10 +22,10 @@
         <th>
             @Html.DisplayNameFor(model => model.ClienteTelefone)
         </th>
-        <th>
+        <th id="estado">
             @Html.DisplayNameFor(model => model.ClienteEstado)
         </th>
-        <th>
+        <th id="cidade">
             @Html.DisplayNameFor(model => model.ClienteCidade)
         </th>
         <th>
@@ -80,7 +80,10 @@
                 </td>
             </tr>
         }
-        </tbody>
+    </tbody>
 </table>
 
 <script src="~/Scripts/Customizados/filtroTabela.js"></script>
+
+<script src="~/Scripts/Customizados/stupidtable.js"></script>
+<script src="~/Scripts/Customizados/SortElement.js"></script>

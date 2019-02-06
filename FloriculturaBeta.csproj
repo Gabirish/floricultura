@@ -211,6 +211,8 @@
     <Content Include="Scripts\Customizados\decimalValidator.js" />
     <Content Include="Scripts\Customizados\filtroTabela.js" />
     <Content Include="Scripts\Customizados\MascarasDosFormularios.js" />
+    <Content Include="Scripts\Customizados\SortElement.js" />
+    <Content Include="Scripts\Customizados\stupidtable.js" />
     <Content Include="Scripts\inputmask\bindings\inputmask.binding.js" />
     <Content Include="Scripts\inputmask\dependencyLibs\inputmask.dependencyLib.jqlite.js" />
     <Content Include="Scripts\inputmask\dependencyLibs\inputmask.dependencyLib.jquery.js" />

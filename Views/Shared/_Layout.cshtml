@@ -4,7 +4,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>@ViewBag.Title - My ASP.NET Application</title>
-  
+
     @Styles.Render("~/Content/css")
     @Scripts.Render("~/bundles/jquery")
     @Scripts.Render("~/bundles/modernizr")
@@ -28,28 +28,28 @@
                 <ul class="nav navbar-nav">
                     <li>@Html.ActionLink("Home", "Index", "Vendas")</li>
                     <li class="dropdown">
-                        @Html.ActionLink("Produtos", "Index", "Produtos", null , new { @class = "dropbtn" })
+                        @Html.ActionLink("Produtos", "Index", "Produtos", null, new { @class = "dropbtn" })
                         <div class="dropdown-content">
                             @Html.ActionLink("Novo Produto", "Create", "Produtos")
                         </div>
                     </li>
 
                     <li class="dropdown">
-                        @Html.ActionLink("Clientes", "Index", "Clientes", null , new { @class = "dropbtn" })
+                        @Html.ActionLink("Clientes", "Index", "Clientes", null, new { @class = "dropbtn" })
                         <div class="dropdown-content">
                             @Html.ActionLink("Novo Cliente", "Create", "Clientes")
                         </div>
                     </li>
 
                     <li class="dropdown">
-                        @Html.ActionLink("Funcionários", "Index", "Funcionarios", null , new { @class = "dropbtn" })
+                        @Html.ActionLink("Funcionários", "Index", "Funcionarios", null, new { @class = "dropbtn" })
                         <div class="dropdown-content">
                             @Html.ActionLink("Novo Funcionário", "Create", "Funcionarios")
                         </div>
                     </li>
 
 
-                    
+
                     <li>@Html.ActionLink("Sair", "Logout", "Login")</li>
                 </ul>
             </div>
@@ -61,9 +61,6 @@
         <hr />
     </div>
 
-
-
-    @*<script src="~/Scripts/Customizados/decimalValidator.js"></script>*@
     <script src="~/Scripts/Customizados/MascarasDosFormularios.js"></script>
 
 </body>
