@@ -1,6 +1,6 @@
 ﻿
 function myFunction($this) {
-    $($this).parent().siblings(":last").find('label').text(("R$ " + ($($this).parent().siblings().eq(1).text().replace(",", ".") * $this.value).toFixed(2)).replace(".", ","));
+    $($this).parent().siblings(":last").find('label').text(("R$ " + ($($this).parent().siblings().eq(1).text().replace(",", ".").replace("R$","") * $this.value).toFixed(2)).replace(".", ","));
     var total;
 
     var sum = 0.0;
