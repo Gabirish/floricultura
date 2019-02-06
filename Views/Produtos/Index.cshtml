@@ -7,8 +7,10 @@
 <h2>Index</h2>
 
 <p>
-    @Html.ActionLink("Create New", "Create")
+    @Html.ActionLink("Create New", "Create", null , new { @class = "btn btn-default btn-primary" })
 </p>
+
+<input id="myInput" class="form-control" onkeyup="filtrar()" type="text" placeholder="Buscar..">
 <table class="table">
     <tr>
         <th>
@@ -25,27 +27,30 @@
         </th>
         <th></th>
     </tr>
-
-@foreach (var item in Model) {
-    <tr>
-        <td>
-            @Html.DisplayFor(modelItem => item.ProdutoNome)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.ProdutoDescricao)
-        </td>
-        <td>
-            R$ @Html.DisplayFor(modelItem => item.ProdutoValor)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.ProdutoEstoque)
-        </td>
-        <td>
-            @Html.ActionLink("Edit", "Edit", new { id=item.ProdutoId }) |
-            @Html.ActionLink("Details", "Details", new { id=item.ProdutoId }) |
-            @Html.ActionLink("Delete", "Delete", new { id=item.ProdutoId })
-        </td>
-    </tr>
-}
-
+    <tbody id="myTable">
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.ProdutoNome)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.ProdutoDescricao)
+                </td>
+                <td>
+                    R$ @Html.DisplayFor(modelItem => item.ProdutoValor)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.ProdutoEstoque)
+                </td>
+                <td>
+                    @Html.ActionLink("Edit", "Edit", new { id = item.ProdutoId }) |
+                    @Html.ActionLink("Details", "Details", new { id = item.ProdutoId }) |
+                    @Html.ActionLink("Delete", "Delete", new { id = item.ProdutoId })
+                </td>
+            </tr>
+        }
+        </tbody>
 </table>
+
+<script src="~/Scripts/Customizados/filtroTabela.js"></script>

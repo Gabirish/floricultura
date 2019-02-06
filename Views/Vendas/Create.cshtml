@@ -12,7 +12,7 @@
     @Html.AntiForgeryToken()
 
     <div class="form-horizontal">
-       
+
 
         @if (ViewBag.erro != null)
         {<h3 class="alert-danger"> @ViewBag.erro </h3>}
@@ -38,12 +38,12 @@
         <div class="form-group">
             <label class="control-label col-md-2">Valor total</label>
             <div class="col-md-10">
-                <input class="form-control" id="total" disabled="disabled" />
+                <input class="form-control" id="total" placeholder="R$ 0,00" disabled="disabled" />
             </div>
 
         </div>
 
-
+        <input id="myInput" class="form-control" onkeyup="filtrar()" type="text" placeholder="Buscar..">
         <table class="table">
             <tr>
                 <th>
@@ -62,39 +62,40 @@
                     Custo parcial
                 </th>
             </tr>
+            <tbody id="myTable">
+                @for (int i = 0; i < Model.Produtos.Count; i++)
+                {
 
-            @for (int i = 0; i < Model.Produtos.Count; i++)
-            {
+                    <tr>
 
-                <tr>
+                        <td>
+                            @Html.HiddenFor(model => model.Produtos[i].ProdutoId)
+                            @Html.HiddenFor(model => model.Produtos[i].ProdutoDescricao)
+                            @Html.DisplayFor(model => model.Produtos[i].ProdutoNome)@Html.HiddenFor(model => model.Produtos[i].ProdutoNome)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(p => p.Produtos[i].ProdutoValor, new { @class = "form-control", Value = Model.Produtos[i].ProdutoValor }) @Html.HiddenFor(model => model.Produtos[i].ProdutoValor)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(p => p.Produtos[i].ProdutoEstoque, new { @class = "form-control", Value = Model.Produtos[i].ProdutoEstoque })@Html.HiddenFor(model => model.Produtos[i].ProdutoEstoque)
+                        </td>
+                        <td>
+                            @if (Model.Produtos[i].ProdutoEstoque < 1)
+                            {
+                                @Html.TextBoxFor(p => p.Produtos[i].QuantidadeVenda, new { value = 0, disabled = "disabled" })
+                            }
+                            else
+                            {
+                                @Html.TextBoxFor(p => p.Produtos[i].QuantidadeVenda, new { value = 0, @id = "quantidade", type = "number", min = 0, @onkeyup = "myFunction(this)" })
+                                if (Model.Produtos[i].ProdutoEstoque < Model.Produtos[i].QuantidadeVenda)
+                                {<p>valor invalido</p>}
+                            }
+                        </td>
+                        <td><label class="valores">_</label></td>
+                    </tr>
 
-                    <td>
-                        @Html.HiddenFor(model => model.Produtos[i].ProdutoId)
-                        @Html.HiddenFor(model => model.Produtos[i].ProdutoDescricao)
-                        @Html.DisplayFor(model => model.Produtos[i].ProdutoNome)@Html.HiddenFor(model => model.Produtos[i].ProdutoNome)
-                    </td>
-                    <td>
-                        @Html.DisplayFor(p => p.Produtos[i].ProdutoValor, new { @class = "form-control", Value = Model.Produtos[i].ProdutoValor }) @Html.HiddenFor(model => model.Produtos[i].ProdutoValor)
-                    </td>
-                    <td>
-                        @Html.DisplayFor(p => p.Produtos[i].ProdutoEstoque, new { @class = "form-control", Value = Model.Produtos[i].ProdutoEstoque })@Html.HiddenFor(model => model.Produtos[i].ProdutoEstoque)
-                    </td>
-                    <td>
-                        @if (Model.Produtos[i].ProdutoEstoque < 1)
-                        {
-                            @Html.TextBoxFor(p => p.Produtos[i].QuantidadeVenda, new { value = 0, disabled = "disabled" })
-                        }
-                        else
-                        {
-                            @Html.TextBoxFor(p => p.Produtos[i].QuantidadeVenda, new { value = 0, @id = "quantidade", type="number",min= 0,  @onkeyup = "myFunction(this)" })
-                            if (Model.Produtos[i].ProdutoEstoque < Model.Produtos[i].QuantidadeVenda)
-                            {<p>valor invalido</p>}
-                        }
-                    </td>
-                    <td><label class="valores">_</label></td>
-                </tr>
-
-            }
+                }
+            </tbody>
         </table>
 
         @*<span id="total"></span>*@
@@ -114,19 +115,6 @@
     @Scripts.Render("~/bundles/jqueryval")
 }
 
-<script>
 
-    function myFunction($this) {
-        $($this).parent().siblings(":last").find('label').text(("R$ " + ($($this).parent().siblings().eq(1).text().replace(",", ".") * $this.value).toFixed(2)).replace(".", ","));
-        var total;
-
-        var sum = 0.0;
-        $('.valores').each(function () {
-            sum += parseFloat($(this).text().replace("R$ ", "").replace(",", ".").replace("_", 0));
-        });
-
-        $('#total').val(("R$ " + sum.toFixed(2)).replace(".",","));
-    }
-
-
-</script>
+<script src="~/Scripts/Customizados/calculoParcialTotal.js"></script>
+<script src="~/Scripts/Customizados/filtroTabela.js"></script>

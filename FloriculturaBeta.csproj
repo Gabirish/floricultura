@@ -159,6 +159,11 @@
     <Compile Include="Controllers\LoginController.cs" />
     <Compile Include="Controllers\ProdutosController.cs" />
     <Compile Include="Controllers\UsuariosController.cs" />
+    <Compile Include="Migrations\201901301425472_InitialCreate.cs" />
+    <Compile Include="Migrations\201901301425472_InitialCreate.Designer.cs">
+      <DependentUpon>201901301425472_InitialCreate.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\Aplicacao.cs" />
     <Compile Include="Models\Repositorio.cs" />
     <Compile Include="Models\Session.cs" />
@@ -180,6 +185,15 @@
     <Content Include="Content\bootstrap-theme.min.css" />
     <Content Include="Content\bootstrap.css" />
     <Content Include="Content\bootstrap.min.css" />
+    <Content Include="Content\Dropdown\animate.css" />
+    <Content Include="Content\Dropdown\animate.min.css" />
+    <Content Include="Content\Dropdown\bootstrap-dropdownhover.css" />
+    <Content Include="Content\Dropdown\bootstrap-dropdownhover.js" />
+    <Content Include="Content\Dropdown\bootstrap-dropdownhover.min.css" />
+    <Content Include="Content\Dropdown\bootstrap-dropdownhover.min.js" />
+    <Content Include="Content\Imagens\background flores inverso.jpg" />
+    <Content Include="Content\Imagens\background flores.jpg" />
+    <Content Include="Content\Imagens\BannerFlores.jpg" />
     <Content Include="favicon.ico" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
@@ -189,9 +203,13 @@
     <Content Include="ApplicationInsights.config">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
+    <None Include="Properties\PublishProfiles\Floricultura - Web Deploy.pubxml" />
     <None Include="Scripts\jquery-3.3.1.intellisense.js" />
-    <Content Include="Scripts\ComparaQuantidade.js" />
-    <Content Include="Scripts\decimalValidator.js" />
+    <Content Include="Scripts\Customizados\calculoParcialTotal.js" />
+    <Content Include="Scripts\Customizados\ComparaQuantidade.js" />
+    <Content Include="Scripts\Customizados\decimalValidator.js" />
+    <Content Include="Scripts\Customizados\filtroTabela.js" />
+    <Content Include="Scripts\Customizados\MascarasDosFormularios.js" />
     <Content Include="Scripts\inputmask\bindings\inputmask.binding.js" />
     <Content Include="Scripts\inputmask\dependencyLibs\inputmask.dependencyLib.jqlite.js" />
     <Content Include="Scripts\inputmask\dependencyLibs\inputmask.dependencyLib.jquery.js" />
@@ -221,7 +239,7 @@
     <Content Include="Scripts\jquery.validate.min.js" />
     <Content Include="Scripts\jquery.validate.unobtrusive.js" />
     <Content Include="Scripts\jquery.validate.unobtrusive.min.js" />
-    <Content Include="Scripts\Mascara.js" />
+    <Content Include="Scripts\Customizados\Mascara.js" />
     <Content Include="Scripts\modernizr-2.8.3.js" />
     <Content Include="Web.config" />
     <Content Include="Web.Debug.config">
@@ -234,9 +252,6 @@
     <Content Include="Views\_ViewStart.cshtml" />
     <Content Include="Views\Shared\Error.cshtml" />
     <Content Include="Views\Shared\_Layout.cshtml" />
-    <Content Include="Views\Home\About.cshtml" />
-    <Content Include="Views\Home\Contact.cshtml" />
-    <Content Include="Views\Home\Index.cshtml" />
     <Content Include="Views\Vendas\Create.cshtml" />
     <Content Include="Views\Vendas\Delete.cshtml" />
     <Content Include="Views\Vendas\Details.cshtml" />
@@ -278,6 +293,11 @@
     <None Include="packages.config" />
     <Content Include="Scripts\jquery-3.3.1.slim.min.map" />
     <Content Include="Scripts\jquery-3.3.1.min.map" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Migrations\201901301425472_InitialCreate.resx">
+      <DependentUpon>201901301425472_InitialCreate.cs</DependentUpon>
+    </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

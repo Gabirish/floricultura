@@ -7,8 +7,10 @@
 <h2>Index</h2>
 
 <p>
-    @Html.ActionLink("Create New", "Create")
+    @Html.ActionLink("Create New", "Create", null, new { @class = "btn btn-default btn-primary" })
 </p>
+
+<input id="myInput" class="form-control" onkeyup="filtrar()" type="text" placeholder="Buscar..">
 <table class="table">
     <tr>
         <th>
@@ -40,42 +42,45 @@
         </th>
         <th></th>
     </tr>
-
-@foreach (var item in Model) {
-    <tr>
-        <td>
-            @Html.DisplayFor(modelItem => item.ClienteNome)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.ClienteCpf)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.ClienteTelefone)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.ClienteEstado)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.ClienteCidade)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.ClienteBairro)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.ClienteRua)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.ClienteNumero)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.ClienteComplemento)
-        </td>
-        <td>
-            @Html.ActionLink("Edit", "Edit", new { id=item.ClienteId }) |
-            @Html.ActionLink("Details", "Details", new { id=item.ClienteId }) |
-            @Html.ActionLink("Delete", "Delete", new { id=item.ClienteId })
-        </td>
-    </tr>
-}
-
+    <tbody id="myTable">
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.ClienteNome)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.ClienteCpf)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.ClienteTelefone)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.ClienteEstado)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.ClienteCidade)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.ClienteBairro)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.ClienteRua)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.ClienteNumero)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.ClienteComplemento)
+                </td>
+                <td>
+                    @Html.ActionLink("Edit", "Edit", new { id = item.ClienteId }) |
+                    @Html.ActionLink("Details", "Details", new { id = item.ClienteId }) |
+                    @Html.ActionLink("Delete", "Delete", new { id = item.ClienteId })
+                </td>
+            </tr>
+        }
+        </tbody>
 </table>
+
+<script src="~/Scripts/Customizados/filtroTabela.js"></script>

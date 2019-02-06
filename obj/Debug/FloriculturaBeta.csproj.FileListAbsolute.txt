@@ -92,4 +92,6 @@ C:\Users\Vini_\source\repos\FloriculturaBeta\FloriculturaBeta\obj\Debug\Floricul
 C:\Users\Vini_\source\repos\FloriculturaBeta\FloriculturaBeta\obj\Debug\FloriculturaBeta.csproj.CopyComplete
 C:\Users\Vini_\source\repos\FloriculturaBeta\FloriculturaBeta\obj\Debug\FloriculturaBeta.dll
 C:\Users\Vini_\source\repos\FloriculturaBeta\FloriculturaBeta\obj\Debug\FloriculturaBeta.pdb
+C:\Users\Vini_\source\repos\FloriculturaBeta\FloriculturaBeta\obj\Debug\FloriculturaBeta.Migrations.InitialCreate.resources
+C:\Users\Vini_\source\repos\FloriculturaBeta\FloriculturaBeta\obj\Debug\FloriculturaBeta.csproj.GenerateResource.cache
 C:\Users\Vini_\source\repos\FloriculturaBeta\FloriculturaBeta\obj\Debug\FloriculturaBeta.csprojAssemblyReference.cache

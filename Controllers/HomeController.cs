@@ -12,7 +12,7 @@ namespace FloriculturaBeta.Controllers
     {
         public ActionResult Index()
         {
-            return View();
+            return RedirectToAction("Login", "Login");
         }
 
         public ActionResult Popular()
@@ -126,20 +126,6 @@ namespace FloriculturaBeta.Controllers
             db.SaveChanges();
 
             return RedirectToAction("Index");
-        }
-
-        public ActionResult About()
-        {
-            ViewBag.Message = "Your application description page.";
-
-            return View();
-        }
-
-        public ActionResult Contact()
-        {
-            ViewBag.Message = "Your contact page.";
-
-            return View();
         }
     }
 }

@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>@ViewBag.Title - My ASP.NET Application</title>
     @Styles.Render("~/Content/css")
-    @Scripts.Render("~/bundles/modernizr")
+    @Scripts.Render("~/bundles/jquery")
 </head>
 <body>
     <div class="navbar navbar-inverse navbar-fixed-top">
@@ -16,48 +16,53 @@
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                 </button>
-                @Html.ActionLink("Floricultura Valença", "Index", "Home", new { area = "" }, new { @class = "navbar-brand" })
+                @Html.ActionLink("Floricultura Valença", "Index", "Vendas", new { area = "" }, new { @class = "navbar-brand" })
             </div>
             <div class="navbar-collapse collapse">
                 <ul class="nav navbar-nav">
-                    <li>@Html.ActionLink("Home", "Index", "Home")</li>
-                    <li>@Html.ActionLink("Produtos", "Index", "Produtos")</li>
-                    <li>@Html.ActionLink("Clientes", "Index", "Clientes")</li>
-                    <li>@Html.ActionLink("Funcionários", "Index", "Funcionarios")</li>
-                    <li>@Html.ActionLink("Vendas", "Index", "Vendas")</li>
+                    <li>@Html.ActionLink("Home", "Index", "Vendas")</li>
+                    <li class="dropdown">
+                        @Html.ActionLink("Produtos", "Index", "Produtos", null , new { @class = "dropbtn" })
+                        <div class="dropdown-content">
+                            @Html.ActionLink("Novo Produto", "Create", "Produtos")
+                        </div>
+                    </li>
+
+                    <li class="dropdown">
+                        @Html.ActionLink("Clientes", "Index", "Clientes", null , new { @class = "dropbtn" })
+                        <div class="dropdown-content">
+                            @Html.ActionLink("Novo Cliente", "Create", "Clientes")
+                        </div>
+                    </li>
+
+                    <li class="dropdown">
+                        @Html.ActionLink("Funcionários", "Index", "Funcionarios", null , new { @class = "dropbtn" })
+                        <div class="dropdown-content">
+                            @Html.ActionLink("Novo Funcionário", "Create", "Funcionarios")
+                        </div>
+                    </li>
+
+
+                    
                     <li>@Html.ActionLink("Sair", "Logout", "Login")</li>
                 </ul>
             </div>
         </div>
     </div>
+
     <div class="container body-content">
         @RenderBody()
         <hr />
-        <footer>
-            <p>&copy; @DateTime.Now.Year - My ASP.NET Application</p>
-        </footer>
     </div>
 
+    @Scripts.Render("~/bundles/modernizr")
 
-    @Scripts.Render("~/bundles/jquery")
     @Scripts.Render("~/bundles/inputmask")
     @Scripts.Render("~/bundles/bootstrap")
     @RenderSection("scripts", required: false)
 
-    <script src="~/Scripts/decimalValidator.js"></script>
-
-
-        <script>
-            $(document).ready(function () {
-                $("#telefone").inputmask("mask", { "mask": "(99) 9999-99999" });
-                $("#cpf").inputmask("mask", { "mask": "999.999.999-99" }, { reverse: true });
-                $("#cep").inputmask("mask", { "mask": "99999-999" });
-                $("#nascimento").inputmask("mask", { "mask": "99/99/9999" });
-                $("#preco").inputmask("mask", { "mask": "999.999,99" }, { reverse: true });
-                $("#valor").inputmask("mask", { "mask": "#.##9,99" }, { reverse: true });
-                $("#ip").inputmask("mask", { "mask": "999.999.999.999" });
-            });
-        </script>
+    <script src="~/Scripts/Customizados/decimalValidator.js"></script>
+    <script src="~/Scripts/Customizados/MascarasDosFormularios.js"></script>
 
 </body>
 </html>

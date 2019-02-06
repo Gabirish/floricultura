@@ -35,7 +35,7 @@ namespace FloriculturaBeta.Controllers
                 return HttpNotFound();
             }
             venda.ItensVenda = (from itemVendas in db.ItensVenda
-                                where itemVendas.ItemVendaId == venda.VendaId
+                                where itemVendas.VendaId == venda.VendaId
                                 select itemVendas).ToList();
             return View(venda);
         }
