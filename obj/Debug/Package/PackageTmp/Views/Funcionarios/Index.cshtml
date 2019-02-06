@@ -1,0 +1,44 @@
+﻿@model IEnumerable<FloriculturaBeta.Models.Funcionario>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Index</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create", null , new { @class = "btn btn-default btn-primary" })
+</p>
+
+<input id="myInput" class="form-control" onkeyup="filtrar()" type="text" placeholder="Buscar..">
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.FuncionarioNome)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.FuncionarioCpf)
+        </th>
+        <th></th>
+    </tr>
+    <tbody id="myTable">
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.FuncionarioNome)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.FuncionarioCpf)
+                </td>
+                <td>
+                    @Html.ActionLink("Edit", "Edit", new { id = item.FuncionarioId }) |
+                    @Html.ActionLink("Details", "Details", new { id = item.FuncionarioId }) |
+                    @Html.ActionLink("Delete", "Delete", new { id = item.FuncionarioId })
+                </td>
+            </tr>
+        }
+        </tbody>
+</table>
+
+<script src="~/Scripts/Customizados/filtroTabela.js"></script>

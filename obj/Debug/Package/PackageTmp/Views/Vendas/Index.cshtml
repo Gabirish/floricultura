@@ -1,0 +1,47 @@
+﻿@model IEnumerable<FloriculturaBeta.Models.Venda>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Vendas</h2>
+
+<p>
+   @Html.ActionLink("Nova Venda", "Create", null, new {@class="btn btn-default btn-primary"})
+</p>
+
+<input id="myInput" class="form-control" onkeyup="filtrar()" type="text" placeholder="Buscar..">
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.Cliente.ClienteNome)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Funcionario.FuncionarioNome)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.VendaData)
+        </th>
+    </tr>
+    <tbody id="myTable">
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Cliente.ClienteNome)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Funcionario.FuncionarioNome)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.VendaData)
+                </td>
+                <td>
+
+                    @Html.ActionLink("Details", "Details", new { id = item.VendaId }) |
+                    @Html.ActionLink("Delete", "Delete", new { id = item.VendaId })
+                </td>
+            </tr>
+        }
+        </tbody>
+</table>

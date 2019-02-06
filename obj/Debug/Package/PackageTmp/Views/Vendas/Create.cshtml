@@ -1,0 +1,120 @@
+﻿@model FloriculturaBeta.Models.Venda
+
+@{
+    ViewBag.Title = "Create";
+}
+
+<h2>Nova Venda</h2>
+
+
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+
+    <div class="form-horizontal">
+
+
+        @if (ViewBag.erro != null)
+        {<h3 class="alert-danger"> @ViewBag.erro </h3>}
+
+        <hr />
+        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+        <div class="form-group">
+            @Html.LabelFor(model => model.FuncionarioId, "Funcionário", htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.DropDownList("FuncionarioId", null, htmlAttributes: new { @class = "form-control" })
+                @Html.ValidationMessageFor(model => model.FuncionarioId, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.ClienteId, "Cliente", htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.DropDownList("ClienteId", null, htmlAttributes: new { @class = "form-control" })
+                @Html.ValidationMessageFor(model => model.ClienteId, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label class="control-label col-md-2">Valor total</label>
+            <div class="col-md-10">
+                <input class="form-control" id="total" placeholder="R$ 0,00" disabled="disabled" />
+            </div>
+
+        </div>
+
+        <input id="myInput" class="form-control" onkeyup="filtrar()" type="text" placeholder="Buscar..">
+        <table class="table">
+            <tr>
+                <th>
+                    Produto
+                </th>
+                <th>
+                    Valor
+                </th>
+                <th>
+                    Unidades Disponiveis
+                </th>
+                <th>
+                    Unidades
+                </th>
+                <th>
+                    Custo parcial
+                </th>
+            </tr>
+            <tbody id="myTable">
+                @for (int i = 0; i < Model.Produtos.Count; i++)
+                {
+
+                    <tr>
+
+                        <td>
+                            @Html.HiddenFor(model => model.Produtos[i].ProdutoId)
+                            @Html.HiddenFor(model => model.Produtos[i].ProdutoDescricao)
+                            @Html.DisplayFor(model => model.Produtos[i].ProdutoNome)@Html.HiddenFor(model => model.Produtos[i].ProdutoNome)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(p => p.Produtos[i].ProdutoValor, new { @class = "form-control", Value = Model.Produtos[i].ProdutoValor }) @Html.HiddenFor(model => model.Produtos[i].ProdutoValor)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(p => p.Produtos[i].ProdutoEstoque, new { @class = "form-control", Value = Model.Produtos[i].ProdutoEstoque })@Html.HiddenFor(model => model.Produtos[i].ProdutoEstoque)
+                        </td>
+                        <td>
+                            @if (Model.Produtos[i].ProdutoEstoque < 1)
+                            {
+                                @Html.TextBoxFor(p => p.Produtos[i].QuantidadeVenda, new { value = 0, disabled = "disabled" })
+                            }
+                            else
+                            {
+                                @Html.TextBoxFor(p => p.Produtos[i].QuantidadeVenda, new { value = 0, @id = "quantidade", type = "number", min = 0, @onkeyup = "myFunction(this)" })
+                                if (Model.Produtos[i].ProdutoEstoque < Model.Produtos[i].QuantidadeVenda)
+                                {<p>valor invalido</p>}
+                            }
+                        </td>
+                        <td><label class="valores">_</label></td>
+                    </tr>
+
+                }
+            </tbody>
+        </table>
+
+        @*<span id="total"></span>*@
+        <div class="form-group">
+            <div class="col-md-offset-2 col-md-10">
+                <input type="submit" value="Concluir" class="btn btn-primary" />
+            </div>
+        </div>
+    </div>
+}
+
+<div>
+    @Html.ActionLink("Voltar", "Index")
+</div>
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}
+
+
+<script src="~/Scripts/Customizados/calculoParcialTotal.js"></script>
+<script src="~/Scripts/Customizados/filtroTabela.js"></script>

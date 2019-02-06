@@ -1,0 +1,42 @@
+﻿@model FloriculturaBeta.Models.Usuario
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>Usuario</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Funcionario.FuncionarioNome)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Funcionario.FuncionarioNome)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.UsuarioLogin)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.UsuarioLogin)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.UsuarioSenha)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.UsuarioSenha)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.UsuarioId }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

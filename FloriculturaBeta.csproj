@@ -205,6 +205,7 @@
     </Content>
     <None Include="Properties\PublishProfiles\Floricultura - Web Deploy.pubxml" />
     <None Include="Scripts\jquery-3.3.1.intellisense.js" />
+    <Content Include="Scripts\Customizados\buscaCep.js" />
     <Content Include="Scripts\Customizados\calculoParcialTotal.js" />
     <Content Include="Scripts\Customizados\ComparaQuantidade.js" />
     <Content Include="Scripts\Customizados\decimalValidator.js" />
