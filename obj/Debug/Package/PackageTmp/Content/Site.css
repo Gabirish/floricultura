@@ -105,3 +105,8 @@ textarea {
 {
     font-weight:bold;
 }
+
+#nome, #custo, #estoque, #estado, #cidade, #vendedor, #cliente, #data 
+{
+    cursor:pointer;
+}

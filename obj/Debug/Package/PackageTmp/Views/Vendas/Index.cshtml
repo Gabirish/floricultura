@@ -7,20 +7,20 @@
 <h2>Vendas</h2>
 
 <p>
-   @Html.ActionLink("Nova Venda", "Create", null, new {@class="btn btn-default btn-primary"})
+    @Html.ActionLink("Nova Venda", "Create", null, new { @class = "btn btn-default btn-primary" })
 </p>
 
 <input id="myInput" class="form-control" onkeyup="filtrar()" type="text" placeholder="Buscar..">
 <table class="table">
     <tr>
-        <th>
-            @Html.DisplayNameFor(model => model.Cliente.ClienteNome)
+        <th id="cliente">
+            Cliente
         </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Funcionario.FuncionarioNome)
+        <th id="vendedor">
+            Vendedor
         </th>
-        <th>
-            @Html.DisplayNameFor(model => model.VendaData)
+        <th id="data">
+            Data
         </th>
     </tr>
     <tbody id="myTable">
@@ -43,5 +43,9 @@
                 </td>
             </tr>
         }
-        </tbody>
+    </tbody>
 </table>
+
+
+<script src="~/Scripts/Customizados/stupidtable.js"></script>
+<script src="~/Scripts/Customizados/SortElement.js"></script>   

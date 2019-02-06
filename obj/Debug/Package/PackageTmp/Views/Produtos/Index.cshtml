@@ -4,25 +4,27 @@
     ViewBag.Title = "Index";
 }
 
+
+
 <h2>Index</h2>
 
 <p>
-    @Html.ActionLink("Create New", "Create", null , new { @class = "btn btn-default btn-primary" })
+    @Html.ActionLink("Create New", "Create", null, new { @class = "btn btn-default btn-primary" })
 </p>
 
 <input id="myInput" class="form-control" onkeyup="filtrar()" type="text" placeholder="Buscar..">
-<table class="table">
+<table class="table" id="simpleTable">
     <tr>
-        <th>
+        <th id="nome">
             @Html.DisplayNameFor(model => model.ProdutoNome)
         </th>
         <th>
             @Html.DisplayNameFor(model => model.ProdutoDescricao)
         </th>
-        <th>
+        <th id="custo">
             @Html.DisplayNameFor(model => model.ProdutoValor)
         </th>
-        <th>
+        <th id="estoque">
             @Html.DisplayNameFor(model => model.ProdutoEstoque)
         </th>
         <th></th>
@@ -50,7 +52,16 @@
                 </td>
             </tr>
         }
-        </tbody>
+    </tbody>
 </table>
 
-<script src="~/Scripts/Customizados/filtroTabela.js"></script>
+
+
+<style type="text/css">
+    th[data-sort] {
+        cursor: pointer;
+    }
+</style>
+
+<script src="~/Scripts/Customizados/stupidtable.js"></script>
+<script src="~/Scripts/Customizados/SortElement.js"></script>

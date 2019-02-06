@@ -46,13 +46,13 @@
         <input id="myInput" class="form-control" onkeyup="filtrar()" type="text" placeholder="Buscar..">
         <table class="table">
             <tr>
-                <th>
+                <th id="nome">
                     Produto
                 </th>
-                <th>
+                <th id="custo">
                     Valor
                 </th>
-                <th>
+                <th id="estoque">
                     Unidades Disponiveis
                 </th>
                 <th>
@@ -74,7 +74,7 @@
                             @Html.DisplayFor(model => model.Produtos[i].ProdutoNome)@Html.HiddenFor(model => model.Produtos[i].ProdutoNome)
                         </td>
                         <td>
-                            @Html.DisplayFor(p => p.Produtos[i].ProdutoValor, new { @class = "form-control", Value = Model.Produtos[i].ProdutoValor }) @Html.HiddenFor(model => model.Produtos[i].ProdutoValor)
+                            R$ @Html.DisplayFor(p => p.Produtos[i].ProdutoValor, new { @class = "form-control", Value = Model.Produtos[i].ProdutoValor }) @Html.HiddenFor(model => model.Produtos[i].ProdutoValor)
                         </td>
                         <td>
                             @Html.DisplayFor(p => p.Produtos[i].ProdutoEstoque, new { @class = "form-control", Value = Model.Produtos[i].ProdutoEstoque })@Html.HiddenFor(model => model.Produtos[i].ProdutoEstoque)
@@ -118,3 +118,5 @@
 
 <script src="~/Scripts/Customizados/calculoParcialTotal.js"></script>
 <script src="~/Scripts/Customizados/filtroTabela.js"></script>
+<script src="~/Scripts/Customizados/stupidtable.js"></script>
+<script src="~/Scripts/Customizados/SortElement.js"></script>

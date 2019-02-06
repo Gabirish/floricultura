@@ -2,7 +2,7 @@ $(document).ready(function () {
 
     var table = $('table');
 
-    $('#nome, #custo, #estoque, #estado, #cidade')
+    $('#nome, #custo, #estoque, #estado, #cidade, #vendedor, #cliente, #data')
         .wrapInner('<span title="sort this column"/>')
         .each(function () {
 
